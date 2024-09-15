@@ -6,13 +6,9 @@ import {
     RESTPostAPIApplicationCommandsJSONBody,
     Routes,
 } from 'discord.js';
-import { createRequire } from 'node:module';
 
 import { Logger } from './logger.js';
-
-const require = createRequire(import.meta.url);
-let Config = require('../../config/config.json');
-let Logs = require('../../lang/logs.json');
+import { Config, Logs } from '../const.js';
 
 export class CommandRegistrationService {
     constructor(private rest: REST) {}

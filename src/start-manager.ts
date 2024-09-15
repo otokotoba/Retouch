@@ -1,18 +1,13 @@
 import { ShardingManager } from 'discord.js';
-import { createRequire } from 'node:module';
 import 'reflect-metadata';
 
+import { Config, Debug, Logs } from './const.js';
 import { GuildsController, RootController, ShardsController } from './controllers/index.js';
 import { Job, UpdateServerCountJob } from './jobs/index.js';
 import { Api } from './models/api.js';
 import { Manager } from './models/manager.js';
 import { HttpService, JobService, Logger, MasterApiService } from './services/index.js';
 import { MathUtils, ShardUtils } from './utils/index.js';
-
-const require = createRequire(import.meta.url);
-let Config = require('../config/config.json');
-let Debug = require('../config/debug.json');
-let Logs = require('../lang/logs.json');
 
 async function start(): Promise<void> {
     Logger.info(Logs.info.appStarted);

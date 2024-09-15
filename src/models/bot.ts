@@ -14,8 +14,8 @@ import {
     RESTEvents,
     User,
 } from 'discord.js';
-import { createRequire } from 'node:module';
 
+import { Config, Debug, Logs } from '../const.js';
 import {
     ButtonHandler,
     CommandHandler,
@@ -26,11 +26,6 @@ import {
 } from '../events/index.js';
 import { JobService, Logger } from '../services/index.js';
 import { PartialUtils } from '../utils/index.js';
-
-const require = createRequire(import.meta.url);
-let Config = require('../../config/config.json');
-let Debug = require('../../config/debug.json');
-let Logs = require('../../lang/logs.json');
 
 export class Bot {
     private ready = false;
