@@ -10,6 +10,8 @@ on:
 jobs:
   unit-tests:
     runs-on: ubuntu-latest
+    env:
+      NODE_ENV: production
     steps:
       - uses: actions/checkout@v4
       - uses: actions/setup-node@v4
@@ -19,7 +21,8 @@ jobs:
       - run: |
           mkdir config
           echo ${{ secrets.CONFIG }} | base64 --decode > config/config.json
+          echo ${{ secrets.DEBUG }} | base64 --decode > config/debug.json
+          echo ${{ secrets.BOT_SITES }} | base64 --decode > config/bot-sites.json
       - run: |
-          npm install
+          npm install --include=dev
           npm test
-
