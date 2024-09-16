@@ -1,22 +1,27 @@
-FROM node:16
+# syntax=docker/dockerfile:1
 
-# Create app directory
+ARG NODE_TAG
+FROM node:${NODE_TAG}
+
 WORKDIR /app
 
-# Copy package.json and package-lock.json
+ENV NODE_ENV production
+
 COPY package*.json ./
+RUN --mount=type=cache,id=s/273a7847-5034-41cf-8c77-3a8ef9afaf44-/root/.npm,target=/root/.npm \
+  npm ci --omit=dev
 
-# Install packages
-RUN npm install
-
-# Copy the app code
 COPY . .
-
-# Build the project
+ARG CONFIG
+ARG BOT_SITES
+ARG DEBUG
+RUN <<EOF
+  mkdir config
+  echo $CONFIG | base64 --decode > config/config.json
+  echo $BOT_SITES | base64 --decode > config/bot-sites.json
+  echo $DEBUG | base64 --decode > config/debug.json
+EOF
 RUN npm run build
 
-# Expose ports
 EXPOSE 3001
-
-# Run the application
 CMD [ "node", "dist/start-manager.js" ]

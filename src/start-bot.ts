@@ -1,6 +1,5 @@
 import { REST } from '@discordjs/rest';
 import { Options, Partials } from 'discord.js';
-import { createRequire } from 'node:module';
 
 import { Button } from './buttons/index.js';
 import { DevCommand, HelpCommand, InfoCommand, TestCommand } from './commands/chat/index.js';
@@ -33,10 +32,7 @@ import {
 } from './services/index.js';
 import { Trigger } from './triggers/index.js';
 import { TokenTrigger } from './triggers/token-trigger.js';
-
-const require = createRequire(import.meta.url);
-let Config = require('../config/config.json');
-let Logs = require('../lang/logs.json');
+import { Config, Logs } from './const.js';
 
 async function start(): Promise<void> {
     // Services

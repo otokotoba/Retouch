@@ -1,16 +1,7 @@
-[variables]
-NIXPACKS_NODE_VERSION = '20'
+[build]
+dockerfilePath = "Dockerfile"
+watchPatterns = ["src/**", "Dockerfile"]
 
-[phases.setup]
-nixPkgs = ['...']
-
-[phases.build]
-cmds = [
-  'mkdir config',
-  'echo ${{ retouch.CONFIG }} | base64 --decode > config/config.json',
-  'npm install',
-  'npm run build'
-]
-
-[start]
-cmd = 'npm start'
+[deploy]
+restartPolicyType = "ALWAYS"
+restartPolicyMaxRetries = 5

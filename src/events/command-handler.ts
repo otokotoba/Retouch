@@ -7,18 +7,14 @@ import {
     ThreadChannel,
 } from 'discord.js';
 import { RateLimiter } from 'discord.js-rate-limiter';
-import { createRequire } from 'node:module';
 
 import { EventHandler } from './index.js';
 import { Command, CommandDeferType } from '../commands/index.js';
+import { Config, Logs } from '../const.js';
 import { DiscordLimits } from '../constants/index.js';
 import { EventData } from '../models/internal-models.js';
 import { EventDataService, Lang, Logger } from '../services/index.js';
 import { CommandUtils, InteractionUtils } from '../utils/index.js';
-
-const require = createRequire(import.meta.url);
-let Config = require('../../config/config.json');
-let Logs = require('../../lang/logs.json');
 
 export class CommandHandler implements EventHandler {
     private rateLimiter = new RateLimiter(

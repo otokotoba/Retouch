@@ -1,13 +1,10 @@
 import parser from 'cron-parser';
 import { DateTime } from 'luxon';
 import schedule from 'node-schedule';
-import { createRequire } from 'node:module';
 
 import { Logger } from './index.js';
+import { Logs } from '../const.js';
 import { Job } from '../jobs/index.js';
-
-const require = createRequire(import.meta.url);
-let Logs = require('../../lang/logs.json');
 
 export class JobService {
     constructor(private jobs: Job[]) {}
