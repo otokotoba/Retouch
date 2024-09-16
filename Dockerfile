@@ -5,8 +5,11 @@ FROM node:${NODE_TAG}
 
 WORKDIR /app
 
+ENV NODE_ENV production
+
 COPY package*.json ./
-RUN npm ci --omit=dev
+RUN --mount=type=cache,id=s/273a7847-5034-41cf-8c77-3a8ef9afaf44-/root/.npm,target=/root/.npm \
+  npm ci --omit=dev
 
 COPY . .
 ARG CONFIG
