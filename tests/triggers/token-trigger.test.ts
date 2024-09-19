@@ -35,26 +35,12 @@ describe('TokenTrigger', () => {
         sinon.restore();
     });
 
-    it('should be triggered when a message including tokens.', () => {
+    it('should be triggered when a message includes tokens.', () => {
         const texts = [
             TOKEN,
             FormatUtils.multiLines(Array(2).fill(TOKEN)),
             FormatUtils.multiLines([...URLS, TOKEN]),
         ];
-
-        for (const t of texts) {
-            discord.mockMessage(t);
-            expect(trigger.triggered(discord.message)).to.equal(true);
-        }
-    });
-
-    // TODO: update TokenTrigger.prototype.triggered
-    it.skip('should be triggered when a message including URLs with tokens', () => {
-        const texts = URLS.map(str => {
-            const url = new URL(str);
-            url.searchParams.append('token', TOKEN);
-            return `${url}`;
-        });
 
         for (const t of texts) {
             discord.mockMessage(t);
@@ -75,7 +61,7 @@ describe('TokenTrigger', () => {
         sinon.assert.calledOnce(trigger.execute as sinon.SinonStub);
     });
 
-    it('should not be triggered when a message not including tokens.', () => {
+    it('should not be triggered when a message does not include tokens.', () => {
         const texts = [FormatUtils.multiLines(URLS)];
 
         for (const t of texts) {
