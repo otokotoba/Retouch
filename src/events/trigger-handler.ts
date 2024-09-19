@@ -1,7 +1,7 @@
 import { Message } from 'discord.js';
 import { RateLimiter } from 'discord.js-rate-limiter';
 
-import { Config } from '../const.js';
+import { Config } from '../constants/config.js';
 import { EventDataService } from '../services/index.js';
 import { Trigger } from '../triggers/index.js';
 

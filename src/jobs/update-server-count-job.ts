@@ -1,7 +1,7 @@
 import { ActivityType, ShardingManager } from 'discord.js';
 
 import { Job } from './index.js';
-import { BotSites, Config, Logs } from '../const.js';
+import { BotSites, Config, Logs } from '../constants/config.js';
 import { CustomClient } from '../extensions/index.js';
 import { BotSite } from '../models/config-models.js';
 import { HttpService, Lang, Logger } from '../services/index.js';

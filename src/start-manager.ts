@@ -1,7 +1,7 @@
 import { ShardingManager } from 'discord.js';
 import 'reflect-metadata';
 
-import { Config, Debug, Logs } from './const.js';
+import { Config, Debug, Logs } from './constants/config.js';
 import { GuildsController, RootController, ShardsController } from './controllers/index.js';
 import { Job, UpdateServerCountJob } from './jobs/index.js';
 import { Api } from './models/api.js';

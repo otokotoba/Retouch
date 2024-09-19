@@ -2,7 +2,7 @@ import djs, { ChatInputCommandInteraction, PermissionsString } from 'discord.js'
 import os from 'node:os';
 import typescript from 'typescript';
 
-import { Config, TsConfig } from '../../const.js';
+import { Config, TsConfig } from '../../constants/config.js';
 import { DevCommandName } from '../../enums/index.js';
 import { Language } from '../../models/enum-helpers/index.js';
 import { EventData } from '../../models/internal-models.js';

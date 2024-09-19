@@ -15,7 +15,7 @@ import {
     User,
 } from 'discord.js';
 
-import { Config, Debug, Logs } from '../const.js';
+import { Config, Debug, Logs } from '../constants/config.js';
 import {
     ButtonHandler,
     CommandHandler,

@@ -3,7 +3,7 @@ import { Request, Response, Router } from 'express';
 import router from 'express-promise-router';
 
 import { Controller } from './index.js';
-import { Config, Logs } from '../const.js';
+import { Config, Logs } from '../constants/config.js';
 import { CustomClient } from '../extensions/index.js';
 import { mapClass } from '../middleware/index.js';
 import {

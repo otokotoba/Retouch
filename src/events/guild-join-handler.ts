@@ -1,7 +1,7 @@
 import { Guild } from 'discord.js';
 
 import { EventHandler } from './index.js';
-import { Logs } from '../const.js';
+import { Logs } from '../constants/config.js';
 import { Language } from '../models/enum-helpers/index.js';
 import { EventDataService, Lang, Logger } from '../services/index.js';
 import { ClientUtils, FormatUtils, MessageUtils } from '../utils/index.js';

@@ -3,7 +3,7 @@ import { DateTime } from 'luxon';
 import schedule from 'node-schedule';
 
 import { Logger } from './index.js';
-import { Logs } from '../const.js';
+import { Logs } from '../constants/config.js';
 import { Job } from '../jobs/index.js';
 
 export class JobService {

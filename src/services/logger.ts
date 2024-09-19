@@ -2,7 +2,7 @@ import { DiscordAPIError } from 'discord.js';
 import { Response } from 'node-fetch';
 import pino from 'pino';
 
-import { Config } from '../const.js';
+import { Config } from '../constants/config.js';
 
 let logger = pino(
     {

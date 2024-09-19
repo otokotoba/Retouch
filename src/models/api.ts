@@ -1,7 +1,7 @@
 import express, { Express } from 'express';
 import util from 'node:util';
 
-import { Config, Logs } from '../const.js';
+import { Config, Logs } from '../constants/config.js';
 import { Controller } from '../controllers/index.js';
 import { checkAuth, handleError } from '../middleware/index.js';
 import { Logger } from '../services/index.js';

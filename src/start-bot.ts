@@ -11,6 +11,7 @@ import {
 } from './commands/index.js';
 import { ViewDateSent } from './commands/message/index.js';
 import { ViewDateJoined } from './commands/user/index.js';
+import { Config, Logs } from './constants/config.js';
 import {
     ButtonHandler,
     CommandHandler,
@@ -32,7 +33,6 @@ import {
 } from './services/index.js';
 import { Trigger } from './triggers/index.js';
 import { TokenTrigger } from './triggers/token-trigger.js';
-import { Config, Logs } from './const.js';
 
 async function start(): Promise<void> {
     // Services

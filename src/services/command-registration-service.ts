@@ -8,7 +8,7 @@ import {
 } from 'discord.js';
 
 import { Logger } from './logger.js';
-import { Config, Logs } from '../const.js';
+import { Config, Logs } from '../constants/config.js';
 
 export class CommandRegistrationService {
     constructor(private rest: REST) {}

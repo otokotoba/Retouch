@@ -10,7 +10,7 @@ import { RateLimiter } from 'discord.js-rate-limiter';
 
 import { EventHandler } from './index.js';
 import { Command, CommandDeferType } from '../commands/index.js';
-import { Config, Logs } from '../const.js';
+import { Config, Logs } from '../constants/config.js';
 import { DiscordLimits } from '../constants/index.js';
 import { EventData } from '../models/internal-models.js';
 import { EventDataService, Lang, Logger } from '../services/index.js';

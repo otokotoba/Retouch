@@ -1,6 +1,6 @@
 import { ErrorRequestHandler } from 'express';
 
-import { Logs } from '../const.js';
+import { Logs } from '../constants/config.js';
 import { Logger } from '../services/index.js';
 
 export function handleError(): ErrorRequestHandler {
