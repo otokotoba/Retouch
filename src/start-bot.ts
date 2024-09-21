@@ -2,7 +2,13 @@ import { REST } from '@discordjs/rest';
 import { Options, Partials } from 'discord.js';
 
 import { Button } from './buttons/index.js';
-import { DevCommand, HelpCommand, InfoCommand, TestCommand } from './commands/chat/index.js';
+import {
+    DevCommand,
+    HelpCommand,
+    InfoCommand,
+    SettingsCommand,
+    TestCommand,
+} from './commands/chat/index.js';
 import {
     ChatCommandMetadata,
     Command,
@@ -57,14 +63,13 @@ async function start(): Promise<void> {
         new HelpCommand(),
         new InfoCommand(),
         new TestCommand(),
+        new SettingsCommand(),
 
         // Message Context Commands
         new ViewDateSent(),
 
         // User Context Commands
         new ViewDateJoined(),
-
-        // TODO: Add new commands here
     ];
 
     // Buttons

@@ -1,4 +1,9 @@
-import { APIApplicationCommandBasicOption, ApplicationCommandOptionType } from 'discord.js';
+import {
+    APIApplicationCommandBasicOption,
+    APIApplicationCommandSubcommandOption,
+    ApplicationCommandOptionType,
+    ChannelType,
+} from 'discord.js';
 
 import { DevCommandName, HelpOption, InfoOption } from '../enums/index.js';
 import { Language } from '../models/enum-helpers/index.js';
@@ -55,6 +60,26 @@ export class Args {
             //     name_localizations: Lang.getRefLocalizationMap('infoOptions.translate'),
             //     value: InfoOption.TRANSLATE,
             // },
+        ],
+    };
+    public static readonly SETTINGS_LOG_CHANNEL: APIApplicationCommandSubcommandOption = {
+        name: Lang.getRef('chatCommands.settingsLogChannel', Language.Default),
+        name_localizations: Lang.getRefLocalizationMap('chatCommands.settingsLogChannel'),
+        description: Lang.getRef('commandDescs.settingsLogChannel', Language.Default),
+        description_localizations: Lang.getRefLocalizationMap('commandDescs.settingsLogChannel'),
+        type: ApplicationCommandOptionType.Subcommand,
+        options: [
+            {
+                name: Lang.getRef('arguments.channel', Language.Default),
+                name_localizations: Lang.getRefLocalizationMap('arguments.channel'),
+                description: Lang.getRef('argDescs.settingsLogChannel', Language.Default),
+                description_localizations: Lang.getRefLocalizationMap(
+                    'argDescs.settingsLogChannel'
+                ),
+                type: ApplicationCommandOptionType.Channel,
+                channel_types: [ChannelType.GuildText],
+                required: true,
+            },
         ],
     };
 }
