@@ -1,6 +1,8 @@
-import { Message } from 'discord.js';
+import { Message, TextBasedChannel, TextChannel } from 'discord.js';
+import { Keyv } from 'keyv';
 
 import { Trigger } from './trigger.js';
+import { Settings } from '../models/database.js';
 import { EventData } from '../models/internal-models.js';
 // import { Logger } from '../services/logger.js';
 import { ClientUtils, FormatUtils, MessageUtils } from '../utils/index.js';
@@ -10,7 +12,7 @@ const URL_REGEX =
 const TOKEN_REGEX = /[a-z\d\-._~+/]{20,}=*/gi; // The quantifier is big enough not to match ordinary English words.
 
 export class TokenTrigger implements Trigger {
-    constructor() {}
+    constructor(private db: Keyv) {}
 
     public requireGuild = true;
 
@@ -45,10 +47,21 @@ export class TokenTrigger implements Trigger {
     }
 
     public async execute(msg: Message<boolean>, data: EventData): Promise<void> {
-        const notifyChannel = await ClientUtils.findNotifyChannel(msg.guild, data.langGuild);
-        if (notifyChannel) {
+        let logChannel: TextBasedChannel;
+
+        const settings = await this.db.get<Settings>(msg.guildId);
+        if (settings?.logChannel) {
+            logChannel = (await ClientUtils.getChannel(
+                msg.client,
+                settings.logChannel
+            )) as TextChannel;
+        } else {
+            logChannel = await ClientUtils.findNotifyChannel(msg.guild, data.langGuild);
+        }
+
+        if (logChannel) {
             await MessageUtils.send(
-                notifyChannel,
+                logChannel,
                 FormatUtils.multiLines([
                     `🚨 ${msg.author} attempted to send a message including tokens.`,
                     `tokens(only first 10 characters) : ${this.tokens.map(t => t.substring(0, 10)).join(', ')}`,

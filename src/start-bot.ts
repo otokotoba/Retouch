@@ -89,7 +89,7 @@ async function start(): Promise<void> {
     ];
 
     // Triggers
-    let triggers: Trigger[] = [new TokenTrigger()];
+    let triggers: Trigger[] = [new TokenTrigger(db)];
 
     // Event handlers
     let guildJoinHandler = new GuildJoinHandler(eventDataService);
