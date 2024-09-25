@@ -32,6 +32,13 @@ export class SettingsCommand implements Command {
 
                 await this.db.set(intr.guildId, value);
 
+                await InteractionUtils.send(
+                    intr,
+                    Lang.getEmbed('displayEmbeds.settingsLogChannel', data.lang, {
+                        LOG_CHANNEL: channel.toString(),
+                    })
+                );
+
                 break;
             }
             case 'list': {

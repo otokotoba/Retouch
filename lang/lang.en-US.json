@@ -54,6 +54,10 @@
             "test": {
                 "description": "Test command works!"
             },
+            "settingsLogChannel": {
+                "title": "Settings",
+                "description": "The log channel has been changed to {{LOG_CHANNEL}}"
+            },
             "settingsList": {
                 "title": "Settings",
                 "fields": [
