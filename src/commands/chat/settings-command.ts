@@ -42,14 +42,19 @@ export class SettingsCommand implements Command {
                 break;
             }
             case 'list': {
+                const notifyChannel = await ClientUtils.findNotifyChannel(
+                    intr.guild,
+                    data.langGuild
+                );
                 const settings = await this.db.get<Settings>(intr.guildId);
+                const channelId = settings?.logChannel ?? notifyChannel?.id;
 
                 await InteractionUtils.send(
                     intr,
                     Lang.getEmbed('displayEmbeds.settingsList', data.lang, {
-                        LOG_CHANNEL: (
-                            await ClientUtils.getChannel(intr.client, settings.logChannel)
-                        ).toString(),
+                        LOG_CHANNEL: channelId
+                            ? (await ClientUtils.getChannel(intr.client, channelId)).toString()
+                            : 'none',
                     })
                 );
 
