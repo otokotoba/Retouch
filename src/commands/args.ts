@@ -82,4 +82,11 @@ export class Args {
             },
         ],
     };
+    public static readonly SETTINGS_LIST: APIApplicationCommandSubcommandOption = {
+        name: Lang.getRef('chatCommands.settingsList', Language.Default),
+        name_localizations: Lang.getRefLocalizationMap('chatCommands.settingsList'),
+        description: Lang.getRef('commandDescs.settingsList', Language.Default),
+        description_localizations: Lang.getRefLocalizationMap('commandDescs.settingsList'),
+        type: ApplicationCommandOptionType.Subcommand,
+    };
 }

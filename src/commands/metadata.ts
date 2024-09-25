@@ -77,7 +77,7 @@ export const ChatCommandMetadata: {
         description_localizations: Lang.getRefLocalizationMap('commandDescs.settings'),
         dm_permission: true,
         default_member_permissions: undefined,
-        options: [{ ...Args.SETTINGS_LOG_CHANNEL }],
+        options: [{ ...Args.SETTINGS_LOG_CHANNEL }, { ...Args.SETTINGS_LIST }],
     },
 };
 

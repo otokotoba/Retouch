@@ -54,6 +54,15 @@
             "test": {
                 "description": "Test command works!"
             },
+            "settingsList": {
+                "title": "Settings",
+                "fields": [
+                    {
+                        "name": "Log Channel : {{LOG_CHANNEL}}",
+                        "value": ["{{REF:argDescs.settingsLogChannel}}"]
+                    }
+                ]
+            },
             "viewDateJoined": {
                 "description": "{{TARGET}} joined on {{DATE}}!"
             },
@@ -191,7 +200,8 @@
             "info": "info",
             "test": "test",
             "settings": "settings",
-            "settingsLogChannel": "log-channel"
+            "settingsLogChannel": "log-channel",
+            "settingsList": "list"
         },
         "userCommands": {
             "viewDateJoined": "View Date Joined"
@@ -210,7 +220,8 @@
             "info": "View bot info.",
             "test": "Run the test command.",
             "settings": "Change or show the settings.",
-            "settingsLogChannel": "set a channel to send messages from the bot."
+            "settingsLogChannel": "set a channel to send messages from the bot.",
+            "settingsList": "show the all settings."
         },
         "argDescs": {
             "devCommand": "Command.",
