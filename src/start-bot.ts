@@ -1,5 +1,8 @@
 import { REST } from '@discordjs/rest';
+import KeyvRedis from '@keyv/redis';
 import { Options, Partials } from 'discord.js';
+import dotenv from 'dotenv';
+import { Keyv } from 'keyv';
 
 import { Button } from './buttons/index.js';
 import {
@@ -41,8 +44,11 @@ import { Trigger } from './triggers/index.js';
 import { TokenTrigger } from './triggers/token-trigger.js';
 
 async function start(): Promise<void> {
+    dotenv.config();
+
     // Services
     let eventDataService = new EventDataService();
+    const db = new Keyv(new KeyvRedis(process.env.REDIS_URL));
 
     // Client
     let client = new CustomClient({
@@ -63,7 +69,7 @@ async function start(): Promise<void> {
         new HelpCommand(),
         new InfoCommand(),
         new TestCommand(),
-        new SettingsCommand(),
+        new SettingsCommand(db),
 
         // Message Context Commands
         new ViewDateSent(),
