@@ -48,7 +48,7 @@ describe('Token trigger', () => {
         ];
 
         for (const t of texts) {
-            discord.mockMessage(t);
+            sinon.stub(discord.message, 'content').get(() => t);
             expect(trigger.triggered(discord.message)).to.equal(true);
         }
     });
@@ -70,7 +70,7 @@ describe('Token trigger', () => {
         const texts = [FormatUtils.multiLines(URLS)];
 
         for (const t of texts) {
-            discord.mockMessage(t);
+            sinon.stub(discord.message, 'content').get(() => t);
             expect(trigger.triggered(discord.message)).to.equal(false);
         }
     });

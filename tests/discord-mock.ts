@@ -1,6 +1,4 @@
 import {
-    APIMessage,
-    APIUser,
     ChannelType,
     ChatInputCommandInteraction,
     Client,
@@ -49,19 +47,19 @@ export class DiscordMock {
             {
                 id: '1',
                 username: 'username',
-            } as APIUser,
+            },
         ]);
     }
 
-    public mockMessage(content: string = ''): void {
+    private mockMessage(): void {
         this.message = Reflect.construct(Message<true>, [
             this.client,
             {
                 id: '1',
                 channel_id: '1',
-                author: this.user as unknown as APIUser,
-                content,
-            } as APIMessage,
+                author: this.user,
+                content: '',
+            },
         ]);
     }
 
