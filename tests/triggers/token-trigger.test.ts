@@ -21,8 +21,10 @@ const URLS = [
     'https://discordjs.guide/preparations/setting-up-a-bot-application.html#your-bot-s-token',
 ];
 
-const TOKEN =
-    'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJodHRwczovL2V4YW1wbGUuYXV0aDAuY29tLyIsImF1ZCI6Imh0dHBzOi8vYXBpLmV4YW1wbGUuY29tL2NhbGFuZGFyL3YxLyIsInN1YiI6InVzcl8xMjMiLCJpYXQiOjE0NTg3ODU3OTYsImV4cCI6MTQ1ODg3MjE5Nn0.CA7eaHjIHz5NxeIJoFK9krqaeZrPLwmMmgI_XiQiIkQ';
+const TOKENS = [
+    'OTk0MeQ3MDgxMjk0Njg0MjQw.LqsoPU.OeISfrT8o4SoLoPE7IPaIFWdOPa8PXOR8esdoO',
+    'MTAwMzQyMDO0ozQ2O7g3MzM3Pf.E84Oip.80oOjExirQOPso5_Os8EoSoKwsEXAo9vMEp01s',
+];
 
 describe('Token trigger', () => {
     dotenv.config();
@@ -42,9 +44,8 @@ describe('Token trigger', () => {
 
     it('should be triggered when a message includes tokens.', () => {
         const texts = [
-            TOKEN,
-            FormatUtils.multiLines(Array(2).fill(TOKEN)),
-            FormatUtils.multiLines([...URLS, TOKEN]),
+            FormatUtils.multiLines(TOKENS),
+            FormatUtils.multiLines([...URLS, ...TOKENS]),
         ];
 
         for (const t of texts) {
