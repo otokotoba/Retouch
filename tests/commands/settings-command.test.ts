@@ -1,6 +1,6 @@
 import KeyvRedis from '@keyv/redis';
 import { expect } from 'chai';
-import dotenv from 'dotenv';
+import 'dotenv/config';
 import { Keyv } from 'keyv';
 import * as sinon from 'sinon';
 
@@ -12,8 +12,6 @@ import { InteractionUtils } from '../../src/utils/index.js';
 import { DiscordMock } from '../discord-mock.js';
 
 describe('Settings command', () => {
-    dotenv.config();
-
     const discord = new DiscordMock();
     const db = new Keyv(new KeyvRedis(process.env.REDIS_URL));
     const command = new SettingsCommand(db);

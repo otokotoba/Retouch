@@ -1,7 +1,7 @@
 /* eslint-disable @typescript-eslint/unbound-method */
 import KeyvRedis from '@keyv/redis';
 import { expect } from 'chai';
-import dotenv from 'dotenv';
+import 'dotenv/config';
 import { Keyv } from 'keyv';
 import * as sinon from 'sinon';
 
@@ -27,8 +27,6 @@ const TOKENS = [
 ];
 
 describe('Token trigger', () => {
-    dotenv.config();
-
     const discord = new DiscordMock();
     const trigger = new TokenTrigger(new Keyv(new KeyvRedis(process.env.REDIS_URL)));
 
