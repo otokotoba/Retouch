@@ -1,4 +1,15 @@
+name: retouch
+
 services:
+  server:
+    build:
+      context: .
+      target: dev
+    env_file: .env
+    ports:
+      - '3001:3001'
+    depends_on:
+      - redis
   redis:
     image: 'bitnami/redis:7.2.5'
     environment:
