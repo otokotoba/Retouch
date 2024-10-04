@@ -12,12 +12,20 @@ RUN --mount=type=cache,target=/root/.npm \
   npm ci --include=dev
 
 COPY . .
-ARG CONFIG
-ARG BOT_SITES
-ARG DEBUG
 RUN npm run build
 
 CMD ["node", "dist/start-bot.js"]
+
+FROM base AS test
+
+ENV NODE_ENV=test
+
+COPY package*.json .
+RUN --mount=type=cache,target=/root/.npm \
+  npm ci --include=dev
+
+COPY . .
+CMD ["npm", "test"]
 
 FROM base AS prod
 
