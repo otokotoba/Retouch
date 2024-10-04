@@ -26,6 +26,10 @@ describe('Settings command', () => {
         sinon.restore();
     });
 
+    after(async () => {
+        await db.disconnect();
+    });
+
     it('should save the channel id on database when the sub command is log-channel.', async () => {
         const [channelId, guildId] = ['1', '1'];
 

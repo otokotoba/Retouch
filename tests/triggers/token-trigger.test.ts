@@ -28,7 +28,8 @@ const TOKENS = [
 
 describe('Token trigger', () => {
     const discord = new DiscordMock();
-    const trigger = new TokenTrigger(new Keyv(new KeyvRedis(process.env.REDIS_URL)));
+    const db = new Keyv(new KeyvRedis(process.env.REDIS_URL));
+    const trigger = new TokenTrigger(db);
 
     beforeEach(() => {
         sinon
@@ -38,6 +39,10 @@ describe('Token trigger', () => {
 
     afterEach(() => {
         sinon.restore();
+    });
+
+    after(async () => {
+        await db.disconnect();
     });
 
     it('should be triggered when a message includes tokens.', () => {
