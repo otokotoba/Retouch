@@ -1,6 +1,6 @@
 [build]
-dockerfilePath = "Dockerfile"
-watchPatterns = ["src/**", "Dockerfile"]
+dockerfilePath = "Dockerfile.prod"
+watchPatterns = ["src/**", "Dockerfile.prod"]
 
 [deploy]
 restartPolicyType = "ALWAYS"
