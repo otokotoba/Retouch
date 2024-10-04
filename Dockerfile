@@ -32,13 +32,14 @@ FROM base AS prod
 ENV NODE_ENV=production
 
 COPY package*.json .
-RUN --mount=type=cache,id=s/273a7847-5034-41cf-8c77-3a8ef9afaf44-/root/.npm,target=/root/.npm \
+RUN --mount=type=cache,id=s/$RAILWAY_SERVICE_ID-/root/.npm,target=/root/.npm \
   npm ci --omit=dev
 
 COPY . .
 ARG CONFIG
 ARG BOT_SITES
 ARG DEBUG
+ARG REDIS_URL
 RUN <<EOF
   mkdir config
   echo $CONFIG | base64 --decode > config/config.json
