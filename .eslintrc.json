@@ -2,13 +2,12 @@
     "root": true,
     "parser": "@typescript-eslint/parser",
     "parserOptions": {
-        "project": "./tsconfig.json"
+        "project": "./tsconfig.eslint.json"
     },
     "plugins": ["@typescript-eslint", "import", "unicorn"],
     "extends": [
         "eslint:recommended",
-        "plugin:@typescript-eslint/recommended",
-        "plugin:@typescript-eslint/recommended-requiring-type-checking",
+        "plugin:@typescript-eslint/recommended-type-checked",
         "plugin:import/recommended",
         "plugin:import/typescript"
     ],

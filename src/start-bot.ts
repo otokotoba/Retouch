@@ -1,8 +1,17 @@
 import { REST } from '@discordjs/rest';
+import KeyvRedis from '@keyv/redis';
 import { Options, Partials } from 'discord.js';
+import 'dotenv/config';
+import { Keyv } from 'keyv';
 
 import { Button } from './buttons/index.js';
-import { DevCommand, HelpCommand, InfoCommand, TestCommand } from './commands/chat/index.js';
+import {
+    DevCommand,
+    HelpCommand,
+    InfoCommand,
+    SettingsCommand,
+    TestCommand,
+} from './commands/chat/index.js';
 import {
     ChatCommandMetadata,
     Command,
@@ -37,6 +46,7 @@ import { TokenTrigger } from './triggers/token-trigger.js';
 async function start(): Promise<void> {
     // Services
     let eventDataService = new EventDataService();
+    const db = new Keyv(new KeyvRedis(process.env.REDIS_URL));
 
     // Client
     let client = new CustomClient({
@@ -57,14 +67,13 @@ async function start(): Promise<void> {
         new HelpCommand(),
         new InfoCommand(),
         new TestCommand(),
+        new SettingsCommand(db),
 
         // Message Context Commands
         new ViewDateSent(),
 
         // User Context Commands
         new ViewDateJoined(),
-
-        // TODO: Add new commands here
     ];
 
     // Buttons
@@ -78,7 +87,7 @@ async function start(): Promise<void> {
     ];
 
     // Triggers
-    let triggers: Trigger[] = [new TokenTrigger()];
+    let triggers: Trigger[] = [new TokenTrigger(db)];
 
     // Event handlers
     let guildJoinHandler = new GuildJoinHandler(eventDataService);

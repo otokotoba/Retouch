@@ -54,6 +54,19 @@
             "test": {
                 "description": "Test command works!"
             },
+            "settingsLogChannel": {
+                "title": "Settings",
+                "description": "The log channel has been changed to {{LOG_CHANNEL}}"
+            },
+            "settingsList": {
+                "title": "Settings",
+                "fields": [
+                    {
+                        "name": "Log Channel : {{LOG_CHANNEL}}",
+                        "value": ["{{REF:argDescs.settingsLogChannel}}"]
+                    }
+                ]
+            },
             "viewDateJoined": {
                 "description": "{{TARGET}} joined on {{DATE}}!"
             },
@@ -189,7 +202,10 @@
             "dev": "dev",
             "help": "help",
             "info": "info",
-            "test": "test"
+            "test": "test",
+            "settings": "settings",
+            "settingsLogChannel": "log-channel",
+            "settingsList": "list"
         },
         "userCommands": {
             "viewDateJoined": "View Date Joined"
@@ -199,18 +215,23 @@
         },
         "arguments": {
             "command": "command",
-            "option": "option"
+            "option": "option",
+            "channel": "channel"
         },
         "commandDescs": {
             "dev": "Developer use only.",
             "help": "Find help or contact support.",
             "info": "View bot info.",
-            "test": "Run the test command."
+            "test": "Run the test command.",
+            "settings": "Change or show the settings.",
+            "settingsLogChannel": "set a channel to send messages from the bot.",
+            "settingsList": "show the all settings."
         },
         "argDescs": {
             "devCommand": "Command.",
             "helpOption": "Option.",
-            "infoOption": "Option."
+            "infoOption": "Option.",
+            "settingsLogChannel": "a channel to send messages from the bot"
         },
         "fields": {
             "commands": "Commands",

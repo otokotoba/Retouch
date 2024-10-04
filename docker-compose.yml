@@ -1,0 +1,22 @@
+name: retouch
+
+services:
+  server:
+    build:
+      context: .
+      target: dev
+    env_file: .env
+    ports:
+      - '3001:3001'
+    depends_on:
+      - redis
+  redis:
+    image: 'bitnami/redis:7.2.5'
+    environment:
+      - ALLOW_EMPTY_PASSWORD=yes
+    ports:
+      - '6379:6379'
+    volumes:
+      - 'redis-data:/bitnami/redis/data'
+volumes:
+  redis-data:

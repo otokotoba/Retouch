@@ -2,10 +2,9 @@ import { createRequire } from 'node:module';
 
 const require = createRequire(import.meta.url);
 
-export const Config =
-    process.env.NODE_ENV === 'production'
-        ? require('../../config/config.json')
-        : require('../../config/config.local.json');
+export const Config = ['production', 'test'].includes(process.env.NODE_ENV)
+    ? require('../../config/config.json')
+    : require('../../config/config.local.json');
 
 export const Logs = require('../../lang/logs.json');
 

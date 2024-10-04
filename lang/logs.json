@@ -27,7 +27,9 @@
         "guildLeft": "Guild '{GUILD_NAME}' ({GUILD_ID}) left."
     },
     "warn": {
-        "managerNoShards": "No shards to spawn."
+        "managerNoShards": "No shards to spawn.",
+        "tokenTriggerLog": "{USER} attempted to send a message including tokens.",
+        "tokenTriggerReply": "You must not send a message including tokens. Your message will be deleted by Admin."
     },
     "error": {
         "unspecified": "An unspecified error occurred.",

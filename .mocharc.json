@@ -3,6 +3,5 @@
     "recursive": true,
     "loader": "ts-node/esm",
     "extensions": ["ts", "tsx"],
-    "spec": ["tests/**/*.test.ts"],
-    "watch-files": ["src"]
+    "spec": ["tests/**/*.test.ts"]
 }
