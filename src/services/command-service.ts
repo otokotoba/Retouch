@@ -10,7 +10,7 @@ import {
 import { Logger } from './logger.js';
 import { Config, Logs } from '../constants/config.js';
 
-export class CommandRegistrationService {
+export class CommandService {
     constructor(private rest: REST) {}
 
     public async process(
@@ -31,7 +31,7 @@ export class CommandRegistrationService {
             remoteCmd => !localCmds.some(localCmd => localCmd.name === remoteCmd.name)
         );
 
-        switch (args[3]) {
+        switch (args[2]) {
             case 'view': {
                 Logger.info(
                     Logs.info.commandActionView
