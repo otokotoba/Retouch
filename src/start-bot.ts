@@ -46,7 +46,9 @@ import { TokenTrigger } from './triggers/token-trigger.js';
 async function start(): Promise<void> {
     // Services
     let eventDataService = new EventDataService();
-    const db = new Keyv(new KeyvRedis(process.env.REDIS_URL));
+    // Specify family=0 to support connections over both IPv6 and IPv4
+    // https://docs.railway.app/guides/private-networking#known-configuration-requirements-for-ipv6
+    const db = new Keyv(new KeyvRedis(process.env.REDIS_URL + '?family=0'));
 
     // Client
     let client = new CustomClient({
