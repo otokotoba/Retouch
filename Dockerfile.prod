@@ -20,7 +20,7 @@ RUN <<EOF
   echo $CONFIG | base64 --decode > config/config.json
   echo $BOT_SITES | base64 --decode > config/bot-sites.json
   echo $DEBUG | base64 --decode > config/debug.json
-  npm run build
+  npm run commands:register
 EOF
 
 CMD [ "node", "dist/start-manager.js" ]
